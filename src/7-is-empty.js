@@ -1,31 +1,37 @@
 export const isEmpty = (stringArrayOrObject) => {
   const type = typeof stringArrayOrObject
+  let boll = "try1"
 
   if (type === 'string') {
     if (stringArrayOrObject === '') {
-      return true
+      boll = true
     }
     else {
-      return false
+      boll = false
     }
   }
 
+
   else if (type === 'object') {
-    if (stringArrayOrObject == {} || stringArrayOrObject == [] || stringArrayOrObject == null) {
-      return true
+    let text = ''
+    try {
+      text = Object.keys(stringArrayOrObject)
     }
-    else {
-      return false
+    catch (err) {
+      text = stringArrayOrObject.toString()
     }
+    finally {
+      text = text.toString()
+      if (text === '') {
+        boll = true
+      }
+      else {
+        boll = false
+      }
+    }
+
   }
-  else if (type === 'array') {
-    if (stringArrayOrObject == null) {
-      return true
-    }
-    else {
-      return false
-    }
-  }
+  return boll
 
 }
 
